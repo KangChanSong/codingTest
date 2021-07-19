@@ -1,30 +1,43 @@
 package String;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
 
-    static String solution(String string){
+    static String solution(String str){
 
-        String result = "";
-        String[] childs = string.split(" ");
-        for(String s: childs){
-            if(result.length() < s.length()) {
-                result = s;
+        String lower = "qwertyuiopasdfghjklzxcvbnm";
+        String upper = lower.toUpperCase();
+        String alphabet = lower + upper;
+
+        char[] charArr = str.toCharArray();
+        char[] resultCharArr = new char[charArr.length];
+
+        for(int i=0; i< charArr.length ; i ++){
+
+            Character c = charArr[i];
+
+            if(alphabet.contains(c.toString())){
+
+                int index = str.indexOf(c);
+                int oppositeIndex = str.length() - index - 1;
+
+                resultCharArr[oppositeIndex] = c;
+
+            } else {
+
+                resultCharArr[i] = c;
             }
         }
 
-        return result;
-    }
+        return String.valueOf(resultCharArr);
+    };
 
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        String input = "";
-        input += scanner.nextLine();
-        scanner.close();
 
-        System.out.println(solution(input));
+        String string = scanner.next();
+        System.out.println(solution(string));
     }
 }
