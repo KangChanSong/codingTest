@@ -1,43 +1,23 @@
 package String;
 
+import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
+    static String solution(String s){
 
-    static String solution(String str){
-
-        String lower = "qwertyuiopasdfghjklzxcvbnm";
-        String upper = lower.toUpperCase();
-        String alphabet = lower + upper;
-
-        char[] charArr = str.toCharArray();
-        char[] resultCharArr = new char[charArr.length];
-
-        for(int i=0; i< charArr.length ; i ++){
-
-            Character c = charArr[i];
-
-            if(alphabet.contains(c.toString())){
-
-                int index = str.indexOf(c);
-                int oppositeIndex = str.length() - index - 1;
-
-                resultCharArr[oppositeIndex] = c;
-
-            } else {
-
-                resultCharArr[i] = c;
-            }
-        }
-
-        return String.valueOf(resultCharArr);
-    };
+        String answer = "NO";
+        s=  s.toUpperCase().replaceAll("[^A-Z]", "");
+        String tmp = new  StringBuilder(s).reverse().toString();
+        if(s.equals(tmp)) answer = "YES";
+        return answer;
+    }
 
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-
-        String string = scanner.next();
+        String string = scanner.nextLine();
         System.out.println(solution(string));
     }
 }
