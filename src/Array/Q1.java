@@ -1,8 +1,8 @@
-package String;
+package Array;
 
 import java.util.Scanner;
 
-public class Q13 {
+public class Q1 {
 
     static void solution(int[] arr){
 

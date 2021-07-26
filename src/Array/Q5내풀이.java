@@ -1,23 +1,27 @@
-package String;
+package Array;
 
 import java.util.Scanner;
 
-
-//에라토스테레스 체
-//원소의 배수들을 먼저 걸러냄
-public class Q17선생님풀이 {
+//시간초과..
+public class Q5내풀이 {
 
     static int solution(int n){
 
         int count = 0;
-        int[] arr = new int[n+1];
+        boolean flag = false;
 
-        for(int i = 2 ; i <= n ; i ++){
+        for(int i=2; i <= n ; i++){
 
-            if(arr[i] == 0) count++;
-            for(int j=i ; j <= n ; j = j+i){
-                arr[j] = 1;
+            for(int j=2 ; j< i ; j++){
+                if(i%j == 0) flag = true;
             }
+
+            if(!flag){
+                count++;
+            } else{
+                flag = false;
+            }
+
         }
 
         return count;
