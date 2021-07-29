@@ -1,7 +1,5 @@
 package String;
 
-import com.sun.xml.internal.fastinfoset.util.CharArray;
-
 import java.util.Scanner;
 
 public class Q4 {
