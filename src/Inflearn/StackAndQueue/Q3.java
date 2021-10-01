@@ -38,12 +38,11 @@ public class Q3 {
                 int picked = s.pop();
                 int curr = 0;
                 if(!stack.isEmpty()) curr = stack.pop();
-                System.out.println(curr);
                 if(picked != curr){
                     stack.push(curr);
                     stack.push(picked);
                 } else {
-                    count++;
+                    count += 2;
                 }
             }
         }
