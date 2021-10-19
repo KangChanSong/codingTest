@@ -25,10 +25,8 @@ public class Q6해답 {
         // arr 를 복사한다.
         // 원본과 복사본을 비교한다.
 
-        int[] copy = Arrays.copyOf(arr, arr.length);
-        selectionSort(copy);
-
-
+        int[] copy = arr.clone();
+        Arrays.sort(copy);
         int x = -1;
         int y = -1;
         for(int i = 0 ; i < arr.length ; i++){
