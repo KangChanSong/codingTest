@@ -12,15 +12,11 @@ public class Q9 {
 
         int low = Arrays.stream(arr).max().getAsInt();
         int high = Arrays.stream(arr).sum();
-        boolean flag = true;
-        int res = Integer.MAX_VALUE;
-        while (flag){
-            if(low == high) flag = false;
+        int res = 0;
+        while (low <= high){
             int mid = (high + low) / 2;
             if(canMakeDVDs(m, arr, mid)){
-                if(res > mid){
-                    res = mid;
-                }
+                res = mid;
                 high = mid - 1;
             } else {
                 low = mid + 1;
@@ -57,6 +53,17 @@ public class Q9 {
         }
         //boolean canMakeDVDs = canMakeDVDs(m, arr, 27);
         //System.out.println(canMakeDVDs);
+
+
         solution(m, arr);
+    }
+
+
+}
+
+class MyThread implements Runnable{
+    @Override
+    public void run() {
+        //...
     }
 }
