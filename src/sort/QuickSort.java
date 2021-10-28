@@ -3,7 +3,6 @@ package sort;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 public class QuickSort {
     public static void main(String[] args) {
         List<Integer> list = Arrays.asList(9,2,3,5,1,6,8);
@@ -20,14 +19,15 @@ public class QuickSort {
         List<Integer> higher = new ArrayList<>();
 
         for(int i = 1 ; i < numbers.size() ; i++){
-            if(numbers.get(i) < pivot) lower.add(numbers.get(i));
-            else higher.add(numbers.get(i));
+            int num = numbers.get(i);
+            if(num < pivot) lower.add(num);
+            else higher.add(num);
         }
 
-        List<Integer> sortedList = quickSort(lower);
-        sortedList.add(pivot);
-        sortedList.addAll(quickSort(higher));
+        List<Integer> sorted = quickSort(lower);
+        sorted.add(pivot);
+        sorted.addAll(quickSort(higher));
 
-        return sortedList;
+        return sorted;
     }
 }
