@@ -32,6 +32,7 @@ public class ArrayToTree {
         }
         public Node makeTreeR(int[] a, int start, int end){
             if(start > end) return null;
+            // mid 보다 작은 노드는 left, 큰 노드는 right 에 재귀적으로 담는다.
             int mid = (start + end) / 2;
             Node node = new Node(mid);
             node.left = makeTreeR(a, start, mid-1);
