@@ -31,6 +31,7 @@ class HashTable{
     int convertToIndex(int hashcode){
         return hashcode % data.length;
     }
+    // key 가 있는지 확인하는 함수
     Node searchKey(LinkedList<Node> list, String key){
         if(list == null) return null;
         for(Node node : list){
@@ -47,6 +48,7 @@ class HashTable{
             data[index] = list;
         }
         Node node = searchKey(list, key);
+        // 링크드 리스트에 키에 해당하는 노드가 없으면 추가, 있으면 value 변경
         if(node == null){
             list.addLast(new Node(key,value));
         } else {
