@@ -9,7 +9,7 @@ public class 최대수입스케줄 {
         public int compare(Lesson o1, Lesson o2) {
             if(o1.day == o2.day) return o1.price < o2.price ? 1: -1;
             if(o1.price == o2.price) return o1.day < o2.day ? 1 : -1;
-            return o1.price < o2.price ? 1 : -1;
+            return o1.price < o2.price ? 1 : (o1.price == o2.price ? 0 : -1);
         }
     });
 
@@ -52,9 +52,9 @@ public class 최대수입스케줄 {
         if(day < 1 || lessons.size() < 1) return 0;
         lessons.stream().filter(lesson -> lesson.day >= day).forEach(lesson -> queue.offer(lesson));
         Lesson lesson = queue.poll();
+        if(lesson == null) return recurse(day-1);
         lessons.remove(lesson);
         queue.clear();
-        if(lesson == null) return recurse(day-1);
         return lesson.price + recurse(day-1);
     }
 }
