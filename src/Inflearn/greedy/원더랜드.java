@@ -42,27 +42,26 @@ public class 원더랜드 {
     }
 
     static long prim(){
-        boolean[] visited = new boolean[V + 1];
-        PriorityQueue<Node> pq = new PriorityQueue<>();
+        boolean[] visited = new boolean[V + 1]; // 노드를 방문했는지 확인
 
-        long res = 0;
-        int cnt = 0;
+        PriorityQueue<Node> pq = new PriorityQueue<>(); // weight 최소힙
 
-        pq.add(new Node(1, 0));
+        int res = 0;
+        int count = 0;
+
+        pq.add(new Node(1, 0)); // 1 로 시작한다.
+
         while (!pq.isEmpty()){
             Node edge = pq.poll();
-            // 이미 확인한 정점이면 pass
             if(visited[edge.to]) continue;
 
-            res += edge.weight;
             visited[edge.to] = true;
+            res += edge.weight;
 
-            //모든 노드를 방문했다면 return
-            if(++cnt == V) return res;
+            if(++count == V) break;
 
             for(int i = 0 ; i < adj[edge.to].size() ; i++){
-                // 연결된 노드들 중 방문하지 않은 노드 찾기.
-                Node next =adj[edge.to].get(i);
+                Node next = adj[edge.to].get(i);
                 if(visited[next.to]) continue;
                 pq.add(next);
             }
