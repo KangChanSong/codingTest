@@ -3,6 +3,8 @@ package Inflearn.greedy;
 import java.util.Arrays;
 import java.util.Scanner;
 
+// Greedy 알고리즘.
+// 작은 값부터 tree 가 만들어질때까지 축 탐색하면 됨
 public class 원더랜드_KRUSKAL {
 
     static int V, E, parents[];
@@ -46,39 +48,36 @@ public class 원더랜드_KRUSKAL {
     static int kruskal(){
         int res = 0, cnt = 0;
 
-        // 간선 가중치 기준 오름차순 정렬
         Arrays.sort(edgeList);
-        // 정점 초기화
         make();
-        
-        // 주어진 간선을 이어보면서
+
         for(Edge edge : edgeList){
-            // 싸이클이 형성되지 않는다면
             if(union(edge.from, edge.to)){
-                // 해당 간선을 사용
                 res += edge.weight;
-                if(++cnt == V-1) return res;
+                cnt ++;
             }
+            if(cnt >= V-1) break;
         }
+
         return res;
     }
 
+    private static void make() {
+        for(int i = 1 ; i <= V ; i++){
+            parents[i]= i;
+        }
+    }
+
     static boolean union(int a, int b){
-        int aRoot = find(a);
-        int bRoot = find(b);
-        if(aRoot == bRoot) return false;
-        parents[aRoot] = bRoot;
+        int fa = find(a);
+        int fb = find(b);
+        if(fa == fb) return false;
+        parents[fa] = fb;
         return true;
     }
 
     private static int find(int a) {
         if(a == parents[a]) return a;
-        return parents[a] = find(parents[a]);
-    }
-
-    private static void make(){
-        for(int i = 1; i <= V ; i++){
-            parents[i] = i;
-        }
+        else return parents[a] = find(parents[a]);
     }
 }
