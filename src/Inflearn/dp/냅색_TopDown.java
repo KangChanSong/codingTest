@@ -3,7 +3,7 @@ package Inflearn.dp;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class 냅색 {
+public class 냅색_TopDown {
 
     static Integer[][] dp;
     static int[] W; // weight
